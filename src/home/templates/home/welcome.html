@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Main page</title>
+{% endblock head %}
+
+
+{% block content %}
+<div class="my-3 text-center container">
+    <h2>Welcome!</h2>
+    <p>Today is {{today}}</p>
+</div>
+
+
+<div class="d-grid gap-2 col-2 mx-auto">
+    <a href="{% url 'program-info' %}" class="btn btn-outline-primary">Account</a>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#program-info">
+        About the program
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="program-info" tabindex="-1" role="dialog" aria-labelledby="program-info" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="program-info">Program details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center">Laboratory Work 1</h3>
+                    <p class="text-left">Creator: Finko S.A.<br>
+                    Group: "123-20ск-1"<br>
+                    Variant 19: "відсутність повторюваних символів"</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="my-0 text-center container">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
