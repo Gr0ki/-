@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     # apps:
     'src.home',
-
+    'src.accounts',
+    
 ]
 
 MIDDLEWARE = [
