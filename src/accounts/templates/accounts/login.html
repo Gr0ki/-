@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Login</title>
+{% endblock head %}
+
+
+{% block content %}
+
+<div class='position-absolute top-50 start-50 translate-middle'>
+    <h4 class="text-center">Sign in:</h4>
+    <div class="input-group flex-nowrap">
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div class="input-group flex-nowrap">
+        <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <p class="text-center link-danger">Error: </p>
+    <div class='d-flex justify-content-between'>
+        <!--button type="button" class="btn btn-outline-primary">Register</button-->
+        <!--button type="button" class="btn btn-primary">Enter</button-->
+        <a href="{% url 'register' %}" class="btn btn-outline-primary">Register</a>
+        <!--Next button needs to validate user data and redirect to account page or tell about error-->
+        <a href="{% url 'account' %}" class="btn btn-primary">Enter</a>
+    </div>
+</div>
+
+{% endblock content %}
