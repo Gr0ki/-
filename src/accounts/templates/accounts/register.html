@@ -8,27 +8,54 @@
 
 {% block content %}
 
+
+
+
 <div class='position-absolute top-50 start-50 translate-middle'>
     <h4 class="text-center">Create a new user:</h4>
-    <div class="input-group flex-nowrap">
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        <div class="input-group flex-nowrap mb-2">
+            <p>Username: </p>
+            {{form.username}}
+        </div>
+        <div class="input-group flex-nowrap mb-2">
+            <p>Password: </p>
+            {{form.password1}}
+        </div>
+        <div class="input-group flex-nowrap mb-2">
+            <p>Re-enter the password: </p>
+            {{form.password2}}
+        </div>
+        {{form.errors}}
+        <!--{{form.as_p}}-->
+    
+
+    <!--<div class="input-group flex-nowrap mb-2">
         <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
-    <div class="input-group flex-nowrap">
-        <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+    <div class="input-group flex-nowrap mb-2">
+        <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
     </div>
-    <p class="text-center link-danger">Error: </p>
-    <div class='d-flex justify-content-between'>
+    <div class="input-group flex-nowrap">
+        <input type="password" class="form-control" placeholder="Repeat your password" aria-label="Password" aria-describedby="addon-wrapping">
+    </div>
+    <p class="text-center link-danger">Error: </p>-->
+        <div class='d-flex justify-content-between'>
         <!--button type="button" class="btn btn-outline-primary">Register</button-->
-        <a href="{% url 'login' %}" class="btn btn-outline-primary">Go back</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-primary">Go back</a>
 
         <!--
             "Enter" button needs to validate data, create new user and...
             ...redirect to account page or tell about error
         -->
         <!--button type="button" class="btn btn-primary">Enter</button-->
-        <!--a href="{% url 'register' %}" class="btn btn-primary">Enter</a-->
-        <a href="{% url 'account' %}" class="btn btn-primary">Enter</a>
-    </div>
+        <!--<a href="{% url 'register' %}" class="btn btn-primary">Enter</a>
+        <a href="{% url 'account' %}" class="btn btn-primary">Enter</a>-->
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </div>
+    </form>
 </div>
 
 {% endblock content %}
