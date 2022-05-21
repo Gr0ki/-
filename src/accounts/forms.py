@@ -27,6 +27,7 @@ class CreateUserForm(UserCreationForm):
         max_length = 30,
         widget = forms.TextInput(
             attrs = {
+                'type': 'password',
                 'class': 'form-control',
                 'placeholder': 'Password',
             }
@@ -37,6 +38,7 @@ class CreateUserForm(UserCreationForm):
         max_length = 30,
         widget = forms.TextInput(
             attrs = {
+                'type': 'password',
                 'class': 'form-control',
                 'placeholder': 'Re-enter the password',
             }
