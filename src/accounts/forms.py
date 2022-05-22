@@ -1,5 +1,6 @@
+from enum import unique
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 
@@ -10,37 +11,8 @@ class CreateUserForm(UserCreationForm):
             'username',
             'password1',
             'password2',
+        ]    
 
-        ]
 
-    username = forms.CharField(
-        max_length = 30,
-        widget = forms.TextInput(
-            attrs = {
-                'class': 'form-control',
-                'placeholder': 'Username',
-            }
-        )
-    )
-
-    password1 = forms.CharField(
-        max_length = 30,
-        widget = forms.TextInput(
-            attrs = {
-                'type': 'password',
-                'class': 'form-control',
-                'placeholder': 'Password',
-            }
-        )
-    )
-
-    password2 = forms.CharField(
-        max_length = 30,
-        widget = forms.TextInput(
-            attrs = {
-                'type': 'password',
-                'class': 'form-control',
-                'placeholder': 'Re-enter the password',
-            }
-        )
-    )
+class AuthUserForm(AuthenticationForm):
+    pass
