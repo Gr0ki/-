@@ -26,13 +26,12 @@
                   </div>
             
                   {% else %}
-            
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                  </li>
-            
+                  <div class="container-fluid" id="navbarText">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                  </div>
                   {% endif %}
-
                 </ul>
             </div>
             {% endblock navbar-text %}
