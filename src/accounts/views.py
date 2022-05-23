@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 
-from .forms import CreateUserForm, AuthUserForm
+from .forms import *
 
 
 class AccountView(LoginRequiredMixin, TemplateView):
@@ -63,10 +63,19 @@ def login_request(request):
 
 
 def logout_request(request):
-    context = {}
-    return render(request, 'registration/logout.html', context)
+    logout(request)
+    return redirect("welcome")
 
 
 def change_password_request(request):
-    context = {}
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('account')
+    else:
+        form = ChangePasswordForm(request.user)
+    context = {'form': form}
     return render(request, 'registration/change_password.html', context)
