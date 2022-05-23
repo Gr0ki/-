@@ -22,12 +22,12 @@
         </div>
         {% if form.is_bound %}
             {% if form.username.errors %}
+                {% render_field form.username class="form-control is-invalid mb-3" placeholder="Username" %}
                 {% for error in form.username.errors %}
                     <div class="invalid-feedback">
                         {{ error }}
                     </div>
                 {% endfor %}
-                {% render_field form.username class="form-control is-invalid mb-3" placeholder="Username" %}
             {% else %}
                 {% render_field form.username class="form-control is-valid mb-3" placeholder="Username" %}
             {% endif %}
@@ -44,12 +44,12 @@
         </div>
         {% if form.is_bound %}
             {% if form.password1.errors %}
+                {% render_field form.password1 class="form-control is-invalid mb-3" placeholder="Password" %}
                 {% for error in form.password1.errors %}
                     <div class="invalid-feedback">
                         {{ error }}
                     </div>
                 {% endfor %}
-                {% render_field form.password1 class="form-control is-invalid mb-3" placeholder="Password" %}
             {% else %}
                 {% render_field form.password1 class="form-control is-valid mb-3" placeholder="Password" %}
             {% endif %}
