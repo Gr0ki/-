@@ -76,6 +76,10 @@ TEMPLATES = [
     },
 ]
 
+# Authorization validation (default: ModelBackend)
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend']
+
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
