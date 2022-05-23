@@ -27,7 +27,7 @@ class AccountView(LoginRequiredMixin, TemplateView):
 #     template_name='registration/register.html'
 
 
-def registerPage(request):
+def register_request(request):
     form = CreateUserForm()
 
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def registerPage(request):
     return render(request, 'registration/register.html', context)
 
 
-def loginPage(request):
+def login_request(request):
     form = AuthUserForm()
 
     if request.method == 'POST':
@@ -60,3 +60,13 @@ def loginPage(request):
     form = AuthUserForm()
     context = {'form': form}
     return render(request, 'registration/login.html', context)
+
+
+def logout_request(request):
+    context = {}
+    return render(request, 'registration/logout.html', context)
+
+
+def change_password_request(request):
+    context = {}
+    return render(request, 'registration/change_password.html', context)
