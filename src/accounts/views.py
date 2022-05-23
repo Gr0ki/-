@@ -44,17 +44,19 @@ def loginPage(request):
     form = AuthUserForm()
 
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
+        form = AuthUserForm(request, data=request.POST)
+        if form.is_valid():
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('account')
+            if user is not None:
+                login(request, user)
+                return redirect('account')
+            else:
+                messages.info(request, 'Username or password is incorrect.')
         else:
             messages.info(request, 'Username or password is incorrect.')
-            context = {}
-            return render(request, 'registration/login.html')
-
+    form = AuthUserForm()
     context = {'form': form}
     return render(request, 'registration/login.html', context)
