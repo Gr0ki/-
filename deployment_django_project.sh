@@ -6,9 +6,9 @@
 if [ "$(ls | grep ABPZ)" != "ABPZ" ]; then
     echo
     echo
-    echo "<------- Clonning the repository for the Practical Work 1 ------->"
+    echo "<------- Clonning the repository for the Practical Work 4 ------->"
     echo
-    git clone --branch PW1 --single-branch https://github.com/Gr0ki/ABPZ.git
+    git clone --branch PW4 --single-branch https://github.com/Gr0ki/ABPZ.git
 fi
 
 if [[ "$PWD" != "ABPZ" ]]; then
