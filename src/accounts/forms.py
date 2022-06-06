@@ -1,6 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
+# from django import forms
+from captcha.fields import CaptchaField
+
 
 class CreateUserForm(UserCreationForm):
     class Meta:
@@ -13,7 +16,7 @@ class CreateUserForm(UserCreationForm):
 
 
 class AuthUserForm(AuthenticationForm):
-    pass
+    captcha = CaptchaField()
 
 
 class ChangePasswordForm(PasswordChangeForm):

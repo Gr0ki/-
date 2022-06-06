@@ -48,34 +48,24 @@ def login_request(request):
     if request.method == 'POST':
         form = AuthUserForm(request, data=request.POST)
 
-        ''' reCAPTCHA validation '''
-        recaptcha_response = request.POST.get('g-recaptcha-response')
-        data = {
-            'secret': GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-        result = r.json()
-
-        if result['success']:
-            ''' if reCAPTCHA returns True '''
-            username = request.POST.get('username')
-            password = request.POST.get('password')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        if form.is_valid():
             user = authenticate(request, username=username, password=password)
+
             if user is not None:
                 if user.is_active:
                     login(request, user)
                     return redirect('account')
                 else:
                     messages.info(request, 'User has been banned.')
-            else:
-                messages.info(request, 'Username or password is incorrect.')
-        else: 
-            ''' if reCAPTCHA returns False '''
-            messages.error(request, 'Invalid reCAPTCHA. Please try again.')
+        else:
+            messages.info(request, 'Username, password or captcha is incorrect.')
+
 
     form = AuthUserForm()
-    context = {'form': form, 'recaptcha_site_key': GOOGLE_RECAPTCHA_SITE_KEY}
+    context = {'form': form}
     return render(request, 'registration/login.html', context)
 
 
